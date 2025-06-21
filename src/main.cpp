@@ -1,25 +1,11 @@
-#include "SDL3/SDL_init.h"
-#include "SDL3/SDL_log.h"
-#include "SDL3/SDL_video.h"
-
-#include <iostream>
-#include <memory>
-#include <ostream>
+#include "chip8/emulator.hpp"
+#include "display/sdl_context.h"
 
 int main() {
-    SDL_Window *window;
     bool done = false;
 
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        std::cerr << "Could not initialize SDL: " << SDL_GetError() << "\n";
-    }
-
-    window = SDL_CreateWindow("CHIP-8 Emulator", 640, 320, SDL_WINDOW_OPENGL);
-
-    if (window == nullptr) {
-        SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Could not create window: %s\n", SDL_GetError());
-        return 1;
-    }
+    auto sdl_ctx = display::sdl_context();
+    auto emulator = chip8::emulator();
 
     while (!done) {
         SDL_Event event;
@@ -33,6 +19,4 @@ int main() {
         //LOGIC
     }
 
-    SDL_DestroyWindow(window);
-    SDL_Quit();
 }
