@@ -23,8 +23,11 @@ namespace display {
     }
 
     screen::~screen() {
-        if (m_window) {
+        if (m_window)
             SDL_DestroyWindow(m_window);
-        }
+        if (m_renderer)
+            SDL_DestroyRenderer(m_renderer);
+        if (m_texture)
+            SDL_DestroyTexture(m_texture);
     }
 }
