@@ -9,7 +9,5 @@ namespace display {
         }
     }
 
-    sdl_context::~sdl_context() {
-        SDL_Quit();
-    }
+    sdl_context::~sdl_context() { SDL_Quit(); }
 }
