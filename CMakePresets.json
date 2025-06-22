@@ -35,6 +35,24 @@
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug"
       }
+    },
+    {
+      "name": "gha-debug",
+      "inherits": [
+        "debug"
+      ],
+      "cacheVariables": {
+        "SDL_UNIX_CONSOLE_BUILD": "ON"
+      }
+    },
+    {
+      "name": "gha-release",
+      "inherits": [
+        "release"
+      ],
+      "cacheVariables": {
+        "SDL_UNIX_CONSOLE_BUILD": "ON"
+      }
     }
   ],
   "buildPresets": [
@@ -45,6 +63,14 @@
     {
       "name": "debug",
       "configurePreset": "debug"
+    },
+    {
+      "name": "gha-debug",
+      "configurePreset": "gha-debug"
+    },
+    {
+      "name": "gha-release",
+      "configurePreset": "gha-release"
     }
   ],
   "workflowPresets": [
@@ -71,6 +97,32 @@
         {
           "type": "build",
           "name": "debug"
+        }
+      ]
+    },
+    {
+      "name": "gha-debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "gha-debug"
+        },
+        {
+          "type": "build",
+          "name": "gha-debug"
+        }
+      ]
+    },
+    {
+      "name": "gha-release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "gha-release"
+        },
+        {
+          "type": "build",
+          "name": "gha-release"
         }
       ]
     }
