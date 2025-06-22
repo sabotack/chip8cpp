@@ -64,9 +64,9 @@ jobs:
           - Release
         include:
           - configuration: Debug
-            preset: debug
+            preset: gha-debug
           - configuration: Release
-            preset: release
+            preset: gha-release
     steps:
       - name: Checkout Source
         uses: actions/checkout@v4
