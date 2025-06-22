@@ -75,4 +75,4 @@ jobs:
           fetch-depth: 0
 
       - name: CMake Build
-        run: cmake --workflow --preset=${{matrix.preset}}
+        run: cmake --workflow --preset=${{matrix.preset}} -DSDL_UNIX_CONSOLE_BUILD=ON
